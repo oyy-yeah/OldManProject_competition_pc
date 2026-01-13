@@ -147,8 +147,8 @@ const posts = ref([
     },
     content: '今天在社区公园教大家拍的秋叶，光线正好，构图用了三分法。大家觉得怎么样？欢迎交作业！',
     images: [
-      '',
-      ''
+      './assets/community_img/秋2.jpg',
+      './assets/community_img/秋1.jpg'
     ],
     tags: ['手机摄影', '秋日美景'],
     likes: 45,
@@ -165,9 +165,9 @@ const posts = ref([
       avatar:'./assets/community_img/2.jpg',
       time: '5小时前'
     },
-    content: '第一次尝试做法式甜点，虽然卖相一般，但味道还不错。家里的小孙子特别爱吃！',
+    content: '第一次尝试做甜点，虽然卖相一般，但味道还不错。家里的小孙子特别爱吃！',
     images: [
-      ''
+      './assets/community_img/甜点.jpg'
     ],
     tags: ['烘焙', '美食分享'],
     likes: 128,

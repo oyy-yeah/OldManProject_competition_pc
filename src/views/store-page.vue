@@ -199,7 +199,7 @@ const products = ref([
     name: '多功能颈椎按摩仪',
     desc: '仿真人手按摩，恒温热敷，缓解颈椎疲劳。',
     points: 1688,
-    image: '',
+    image: './assets/store_img/多功能颈椎按摩仪.jpg',
     category: 'health',
     stock: 12
   },
@@ -208,7 +208,7 @@ const products = ref([
     name: '智能保温杯 500ml',
     desc: '数显温度，长效保温，食品级304不锈钢材质。',
     points: 888,
-    image: '',
+    image: './assets/store_img/保温杯.jpg',
     category: 'daily',
     stock: 45
   },
@@ -217,7 +217,7 @@ const products = ref([
     name: '有机五常大米 5kg',
     desc: '产地直供，颗粒饱满，饭香浓郁。',
     points: 1288,
-    image: '',
+    image: './assets/store_img/5kg大米.jpg',
     category: 'food',
     stock: 8
   },
@@ -226,7 +226,7 @@ const products = ref([
     name: '视频会员月卡',
     desc: '畅看海量高清影视剧，无广告打扰。',
     points: 688,
-    image: '',
+    image: './assets/store_img/会员卡.jpg',
     category: 'virtual',
     stock: 999
   },
@@ -235,7 +235,7 @@ const products = ref([
     name: '家用电子血压计',
     desc: '一键测量，语音播报，大屏显示更清晰。',
     points: 2188,
-    image: '',
+    image: './assets/store_img/血压仪.jpg',
     category: 'health',
     stock: 3
   },
@@ -244,7 +244,7 @@ const products = ref([
     name: '全棉舒适毛巾套装',
     desc: '精选新疆长绒棉，吸水性强，柔软亲肤。',
     points: 688,
-    image: '',
+    image: './assets/store_img/毛巾.jpg',
     category: 'daily',
     stock: 60
   },
@@ -253,7 +253,7 @@ const products = ref([
     name: '鸡蛋',
     desc: '新鲜鸡蛋，无籽，100%自然。',
     points: 188,
-    image: '',
+    image: './assets/store_img/鸡蛋.jpg',
     category: 'food',
     stock: 20
   }
