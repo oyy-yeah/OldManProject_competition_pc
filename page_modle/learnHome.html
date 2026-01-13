@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Elderly Learning Home Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "accent-green": "#28a745",
+                        "accent-orange": "#f39c12",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d141b] dark:text-slate-50 min-h-screen">
+    <div class="layout-container flex flex-col min-h-screen">
+        <!-- Top Navigation Bar -->
+        <header
+            class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-solid border-[#e7edf3] dark:border-slate-800 px-6 py-4 lg:px-20">
+            <div class="max-w-[1280px] mx-auto flex items-center justify-between">
+                <div class="flex items-center gap-10">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-primary text-white p-2 rounded-lg">
+                            <span class="material-symbols-outlined">auto_stories</span>
+                        </div>
+                        <h2 class="text-xl font-bold leading-tight tracking-tight">SilverLearn</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="flex items-center gap-2 text-primary font-bold border-b-2 border-primary pb-1"
+                            href="#">
+                            <span class="material-symbols-outlined">home</span> Home
+                        </a>
+                        <a class="flex items-center gap-2 text-[#4c739a] dark:text-slate-400 font-medium hover:text-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">school</span> Courses
+                        </a>
+                        <a class="flex items-center gap-2 text-[#4c739a] dark:text-slate-400 font-medium hover:text-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">group</span> Social
+                        </a>
+                        <a class="flex items-center gap-2 text-[#4c739a] dark:text-slate-400 font-medium hover:text-primary transition-colors"
+                            href="#">
+                            <span class="material-symbols-outlined">shopping_bag</span> Store
+                        </a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="hidden sm:flex items-center bg-[#e7edf3] dark:bg-slate-800 rounded-xl px-4 py-2 w-64">
+                        <span class="material-symbols-outlined text-[#4c739a] mr-2">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-base w-full"
+                            placeholder="Search lessons..." type="text" />
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="text-right hidden sm:block">
+                            <p class="text-sm font-bold">Martha J.</p>
+                            <p class="text-xs text-accent-green font-bold">1,240 Points</p>
+                        </div>
+                        <div class="size-12 rounded-full bg-cover bg-center border-2 border-primary"
+                            data-alt="Senior woman with a friendly smile"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIHmIH1MUuzriIKcwtHaCTiKyuPSJCt5rUVOTbmdygTC7z5_DkTsizQzCLpgVfG-ta0_OOmzT10cUkcCrR_5xnNlvXrKKEVFIKHwQ2K-NGwruHkHrG1PrwcwRjT64mvg6jDp2tKfHWFvcf_vxPMAzkpPjldIfy4uA19YgB0u01R3DQwtM-la4JidyEOvPJ1gBFS9z3X1ZbfNQv3WSlW5Nc5oSq5Lf9U7ywNEIrES96Bdue50XXasDvWsgctYlB5vRRA_PxKaLUHnB0");'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="max-w-[1280px] mx-auto w-full px-6 py-8 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left & Main Content (9 columns) -->
+            <div class="lg:col-span-9 flex flex-col gap-8">
+                <!-- Hero Section / Daily Check-in -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-2/5 h-64 md:h-auto bg-cover bg-center"
+                            data-alt="Bright morning sunrise over a peaceful garden"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5zLqRaFxFrvMEDeZS276cNhYVC4mVyM91ymdRaIQuw99qPJ82xVLR77w-88H9-eIZRrUkno3ossusSmlnJyWEspjxFV-WcsNqGgWvltv1vppJNx4v32bpi9OENJUUhvIdCYZTO-mEzPqxcUUsbQW61cwV6zc3fUmlKSApg7pe-HfSxZWCV7cVtOyRJDeMWim4EjGvTRoxnYphjt19UTssEQcVOhw8jErxnQSHkl44-OelhLeY_MfpNS7-sQNVe37U-toPyCVaibqC");'>
+                        </div>
+                        <div class="p-8 md:p-10 flex flex-col justify-center gap-6 flex-1">
+                            <div>
+                                <h1 class="text-4xl font-black text-slate-900 dark:text-white mb-3">Good Morning,
+                                    Martha!</h1>
+                                <p class="text-lg text-slate-600 dark:text-slate-400">You've visited 5 days in a row.
+                                    Check-in now to keep your streak and earn <span
+                                        class="text-accent-orange font-bold">20 bonus points</span>!</p>
+                            </div>
+                            <button
+                                class="bg-primary hover:bg-blue-600 text-white text-xl font-bold py-4 px-8 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-3 w-fit">
+                                <span class="material-symbols-outlined">event_available</span>
+                                Check-in Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recommended Courses Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold px-1">Recommended for You</h2>
+                        <a class="text-primary font-bold hover:underline" href="#">View all courses</a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-md group border border-slate-100 dark:border-slate-800">
+                            <div class="aspect-video bg-cover bg-center relative"
+                                data-alt="Grandmother video calling her grandchildren"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbmpKyT0VXE4Xw5c5HmspoTzrAa6kCRAqIIktWjPRm6n8HGYHjh-MjwMvc6wZA634xtx2Y2_AS1VVwWNTb03oNw2SRIp5GfspN3O7SSAplmZbem3MdaGHX6m8CnQHT2lu3py9ZKeV_-BHuSExWj-a1WrIasRC4DYLK6S7l1Oc4BSBvnhIXRGZG3kR4cRTtxK8vl8vuqg8gDQwkJNbR1ChWZzY63F_QiSEG9t0SU8CCQylTcb5DZo6m8Mthr5QA0JQ-wvGX8b5lzYO3");'>
+                                <div
+                                    class="absolute top-3 right-3 bg-accent-orange text-white text-xs font-bold px-2 py-1 rounded">
+                                    POPULAR</div>
+                            </div>
+                            <div class="p-5 flex flex-col gap-4">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                                        Mastering Video Calls</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">See and talk to your grandkids
+                                        anytime, anywhere.</p>
+                                </div>
+                                <button
+                                    class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-900 dark:text-slate-100 font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-xl">play_circle</span>
+                                    Start Learning
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-md group border border-slate-100 dark:border-slate-800">
+                            <div class="aspect-video bg-cover bg-center relative"
+                                data-alt="Secure digital lock icon on a tablet"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcgIFe2va7IiGzVeWS4mV2M_h-YK0dfZZ1DbLd-LbzQyHiqbNvUnjkEm2mmoDr8OMnm7Yyn28u6GKTTgi30GuoTQtZ7QGB00WDKj7m9KbiLos-3bwSEwTfxpaB_RlgM3YzAJGWFOESzhoYRDvQJYjQ3hJ0BtavtqN4p8rHiP6IA91UN_UirpEkTBkD4KpZhD6Iue2VzuFTwN0XR5W9r4FOfS0IiIXRC-DC4KvVm2Y_oebstSrCbCXYuA_x10dviFuzq9ghJG6cQECp");'>
+                                <div
+                                    class="absolute top-3 right-3 bg-accent-green text-white text-xs font-bold px-2 py-1 rounded">
+                                    ESSENTIAL</div>
+                            </div>
+                            <div class="p-5 flex flex-col gap-4">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1 group-hover:text-primary transition-colors">Online
+                                        Safety Basics</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">Learn how to spot scams and
+                                        keep your data safe.</p>
+                                </div>
+                                <button
+                                    class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-900 dark:text-slate-100 font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-xl">play_circle</span>
+                                    Start Learning
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-md group border border-slate-100 dark:border-slate-800">
+                            <div class="aspect-video bg-cover bg-center relative"
+                                data-alt="Digital map application on a smartphone"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDM12Hk4ACk5TH6u8OhutMJni1TgtvmUk62xf4vAy7krJODzQKR-cdToNbrBZ98Gum13rZOZBOa2wW3pahme8tAUjm2dt0VObsvYoTXTuV23Cg3-7HIfVMpxnFDVqnqsXCTib3xH8PHhprsyeTnDp4ixRXEkdCtyF5K5v53bBbMs4IcQHY5xQDavTziFr4FpHFRQ7UhtVhcbpHf-4a9BVgKJ56EfaoDJR943yL-sOO0hjMnJLBhDP3XzyE5Aq8Gq6RxyGAefNuRmVEX");'>
+                            </div>
+                            <div class="p-5 flex flex-col gap-4">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1 group-hover:text-primary transition-colors">Using
+                                        Digital Maps</h3>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm">Find your way to shops, parks,
+                                        and new cities.</p>
+                                </div>
+                                <button
+                                    class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white text-slate-900 dark:text-slate-100 font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-xl">play_circle</span>
+                                    Start Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Latest Activities -->
+                <section>
+                    <h2 class="text-2xl font-bold px-1 mb-6">Latest Activities</h2>
+                    <div
+                        class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800">
+                        <!-- Activity Item 1 -->
+                        <div class="p-6 flex items-center justify-between">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="size-14 bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined">emoji_events</span>
+                                </div>
+                                <div>
+                                    <p class="text-lg font-bold">Earned "Safety First" Badge</p>
+                                    <p class="text-slate-500 text-sm">You completed the Online Safety module yesterday.
+                                    </p>
+                                </div>
+                            </div>
+                            <button class="text-primary font-bold hover:underline">View Badge</button>
+                        </div>
+                        <!-- Activity Item 2 -->
+                        <div class="p-6 flex items-center justify-between">
+                            <div class="flex items-center gap-5">
+                                <div
+                                    class="size-14 bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center rounded-full">
+                                    <span class="material-symbols-outlined">chat</span>
+                                </div>
+                                <div>
+                                    <p class="text-lg font-bold">New message from Robert</p>
+                                    <p class="text-slate-500 text-sm">"Hey Martha, did you see the new photography
+                                        course?"</p>
+                                </div>
+                            </div>
+                            <button class="bg-primary text-white font-bold px-5 py-2 rounded-lg">Reply</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Sidebar (3 columns) -->
+            <aside class="lg:col-span-3 flex flex-col gap-8">
+                <!-- AI Assistant Widget -->
+                <div
+                    class="bg-[#fff8ee] dark:bg-slate-900 border-2 border-accent-orange rounded-xl p-6 shadow-lg flex flex-col gap-6 sticky top-32">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="size-16 rounded-full bg-accent-orange flex items-center justify-center text-white shadow-md">
+                            <span class="material-symbols-outlined !text-4xl">smart_toy</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-900 dark:text-white">Hi, I'm Joy!</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm">Your learning assistant</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-slate-800 p-4 rounded-lg italic text-slate-700 dark:text-slate-300 relative">
+                        "Need help finding a lesson or sending a message? Just ask me!"
+                        <div class="absolute -top-2 left-6 w-4 h-4 bg-white dark:bg-slate-800 rotate-45"></div>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <button
+                            class="w-full bg-accent-orange hover:bg-orange-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors shadow-md">
+                            <span class="material-symbols-outlined">mic</span>
+                            Talk to Joy
+                        </button>
+                        <button
+                            class="w-full bg-white dark:bg-slate-800 border-2 border-accent-orange/30 text-accent-orange font-bold py-3 rounded-xl hover:bg-orange-50 transition-colors">
+                            Type a question
+                        </button>
+                    </div>
+                    <div class="pt-4 border-t border-accent-orange/20">
+                        <p class="text-xs font-bold text-accent-orange uppercase tracking-wider mb-3">Quick Actions</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button
+                                class="text-xs bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 text-left hover:bg-slate-50">How
+                                to Zoom?</button>
+                            <button
+                                class="text-xs bg-white dark:bg-slate-800 p-2 rounded border border-slate-200 dark:border-slate-700 text-left hover:bg-slate-50">Forgot
+                                Pass</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Daily Progress -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-lg font-bold mb-4">Daily Goal</h3>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium">30 mins Learning</span>
+                        <span class="text-sm font-bold text-primary">20/30m</span>
+                    </div>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden mb-6">
+                        <div class="bg-primary h-full w-[66%]"></div>
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex-1 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg text-center">
+                            <p class="text-xs text-blue-600 dark:text-blue-400 font-bold uppercase">Streak</p>
+                            <p class="text-2xl font-black text-blue-700 dark:text-blue-300">5</p>
+                            <p class="text-[10px] text-blue-600/60">Days</p>
+                        </div>
+                        <div class="flex-1 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg text-center">
+                            <p class="text-xs text-green-600 dark:text-green-400 font-bold uppercase">Points</p>
+                            <p class="text-2xl font-black text-green-700 dark:text-green-300">1.2k</p>
+                            <p class="text-[10px] text-green-600/60">Total</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+        <!-- Help Button (Fixed) -->
+        <button
+            class="fixed bottom-8 right-8 size-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-[100]">
+            <span class="material-symbols-outlined !text-4xl">question_mark</span>
+        </button>
+    </div>
+</body>
+
+</html>
