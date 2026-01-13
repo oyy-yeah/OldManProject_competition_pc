@@ -1,2 +1,2 @@
 # OldManProject_competition_pc
-pc端用于
+pc端用于老年学习平台
