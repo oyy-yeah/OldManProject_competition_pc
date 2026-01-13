@@ -241,12 +241,7 @@ const courses = ref([
     desc: '每天进步一点点',
      image: ''
   },
-   {
-    id: 'c-3',
-    title: '健康养生课堂',
-    desc: '每天进步一点点',
-      image: ''
-  },
+ 
 ])
 
 // 注册逻辑状态

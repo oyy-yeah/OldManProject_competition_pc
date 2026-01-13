@@ -184,23 +184,52 @@ const courses = ref([
      coverUrl: ''
   },
   {
-    id: 'c-10',
-    title: '家庭K歌：手机点歌与音响连接',
-    instructor: '吴老师',
-    rating: 4.3,
-    learners: 560,
+    id: 'c-12',
+    title: '传统技艺：毛笔书法入门',
+    instructor: '李老师',
+    rating: 4.7,
+    learners: 896,
     level: '入门',
-     coverUrl: ''
+    coverUrl: ''
   },
   {
-    id: 'c-10',
-    title: '家庭K歌：手机点歌与音响连接',
-    instructor: '吴老师',
-    rating: 4.3,
-    learners: 560,
+    id: 'c-13',
+    title: '传统技艺：中国结编织教程',
+    instructor: '张老师',
+    rating: 4.5,
+    learners: 752,
     level: '入门',
-     coverUrl: ''
+    coverUrl: ''
+  },
+  {
+    id: 'c-14',
+    title: '传统技艺：剪纸花样创作',
+    instructor: '王老师',
+    rating: 4.6,
+    learners: 689,
+    level: '入门',
+    coverUrl: ''
+  },
+  {
+    id: 'c-15',
+    title: '传统技艺：简易刺绣针法',
+    instructor: '陈老师',
+    rating: 4.4,
+    learners: 573,
+    level: '入门',
+    coverUrl: ''
+  },
+  {
+    id: 'c-11',
+    title: '传统技艺：手工折纸艺术',
+    instructor: '赵老师',
+    rating: 4.8,
+    learners: 921,
+    level: '入门',
+    coverUrl: ''
   }
+
+  
 ])
 
 const categories = ['传统技艺', '美食', '运动', '文化表达', '智能设备', '生活服务']
@@ -217,7 +246,13 @@ const categoriesMap = {
   'c-7': '智能设备',
   'c-8': '生活服务',
   'c-9': '生活服务',
-  'c-10': '文化表达'
+  'c-10': '文化表达',
+  'c-11': '传统技艺',
+  'c-12': '传统技艺',
+  'c-13': '传统技艺',
+  'c-14': '传统技艺',
+  'c-15': '传统技艺',
+
 }
 
 const onSelectCategory = (cat) => {
