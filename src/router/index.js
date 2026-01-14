@@ -6,6 +6,7 @@ import CommunityPage from '../views/community-page.vue'
 import StorePage from '../views/store-page.vue'
 import MyPage from '../views/my.vue'
 import NewLearnHome from '../views/newlearnHome.vue'
+import FirstLoginSurvey from '../views/FirstLoginSurvey.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,7 @@ const router = createRouter({
     { path: '/community', name: 'Community', component: CommunityPage, meta: { title: '社区', showGlobalNav: true, fullWidth: false } },
     { path: '/store', name: 'Store', component: StorePage, meta: { title: '商店', showGlobalNav: true, fullWidth: false } },
     { path: '/my', name: 'My', component: MyPage, meta: { title: '个人中心', showGlobalNav: true, fullWidth: false } },
+    { path: '/survey', name: 'Survey', component: FirstLoginSurvey, meta: { title: '欢迎加入', showGlobalNav: false, fullWidth: true } },
     { path: '/:pathMatch(.*)*', redirect: '/' }
   ]
 })

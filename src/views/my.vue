@@ -164,6 +164,17 @@
                 </div>
               </div>
             </div>
+
+            <div>
+              <h2 class="text-xl font-bold text-slate-900 mb-4">账号操作</h2>
+              <button 
+                @click="handleLogout"
+                class="w-full bg-rose-50 text-rose-600 border border-rose-200 font-bold py-4 rounded-xl hover:bg-rose-100 active:scale-95 transition-all flex items-center justify-center gap-2"
+              >
+                <span class="material-symbols-outlined">logout</span>
+                退出登录
+              </button>
+            </div>
           </section>
 
           <!-- 消息与反馈模块 -->
@@ -223,8 +234,10 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { userStore } from '../store/userStore'
 
+const router = useRouter()
 const activeTab = ref('profile')
 const loading = ref(false)
 const isEditing = ref(false)
@@ -298,6 +311,16 @@ const changePassword = () => {
     pwdForm.value = { old: '', new: '' }
   } else {
     alert('原密码错误（测试密码：123456）')
+  }
+}
+
+const handleLogout = () => {
+  if (confirm('确定要退出登录吗？')) {
+    userStore.logout()
+    router.replace('/')
+    // 由于跳转后页面会刷新或重置，这里的 showToast 可能不会显示在首页
+    // 如果需要跨页显示 Toast，通常需要全局事件总线或 Store 状态，这里简单处理
+    setTimeout(() => alert('已安全退出'), 100) 
   }
 }
 </script>

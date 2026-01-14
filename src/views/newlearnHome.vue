@@ -74,7 +74,7 @@
             </div>
 
             <div class="lg:col-span-5">
-              <div class="mx-auto w-full max-w-[360px] bg-white p-8 shadow-xl nlh-rounded">
+              <div v-if="!userStore.isLoggedIn" class="mx-auto w-full max-w-[360px] bg-white p-8 shadow-xl nlh-rounded">
                 <div class="text-center">
                   <div class="text-3xl font-black text-blue-600">注册</div>
                   <div class="mt-2 text-lg font-semibold text-slate-700">欢迎来到银发学习平台</div>
@@ -121,18 +121,44 @@
                 </div>
 
                 <button 
-                  class="mt-6 w-full bg-blue-600 text-white font-bold py-3 active:scale-95 transition-transform flex items-center justify-center gap-2"
+                  class="mt-6 w-full bg-blue-600 text-white font-bold py-3 active:scale-95 transition-transform flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   @click="handleRegister"
-                  :disabled="isSuccess"
+                  :disabled="isSuccess || isLoading"
                 >
-                  <span v-if="isSuccess" class="material-symbols-outlined animate-bounce">check_circle</span>
-                  {{ isSuccess ? '注册成功' : '立即注册' }}
+                  <span v-if="isLoading" class="material-symbols-outlined animate-spin">progress_activity</span>
+                  <span v-else-if="isSuccess" class="material-symbols-outlined animate-bounce">check_circle</span>
+                  {{ isLoading ? '注册中...' : (isSuccess ? '注册成功' : '立即注册') }}
                 </button>
 
                 <div v-if="isSuccess" class="mt-4 text-center text-emerald-600 font-bold animate-fade-in">
                   欢迎来到学习平台，即将跳转...
                 </div>
                 <div v-else class="mt-4 text-center text-xs text-slate-500">我们将保护好您的隐私</div>
+              </div>
+
+              <!-- 已登录状态显示 -->
+              <div v-else class="mx-auto w-full max-w-[360px] bg-white p-8 shadow-xl nlh-rounded flex flex-col items-center text-center animate-fade-in">
+                <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-100 mb-4 shadow-sm">
+                  <img :src="userStore.userInfo.avatar" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="text-2xl font-black text-slate-800 mb-2">欢迎回来</div>
+                <div class="text-xl font-bold text-blue-600 mb-6">{{ userStore.userInfo.name }}</div>
+                
+                <button 
+                  @click="router.push('/my')"
+                  class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-2"
+                >
+                  <span class="material-symbols-outlined">person</span>
+                  进入个人中心
+                </button>
+                
+                <button 
+                  @click="router.push('/course')"
+                  class="mt-3 w-full bg-white text-slate-700 border-2 border-slate-200 font-bold py-3 rounded-xl hover:bg-slate-50 active:scale-95 transition-all flex items-center justify-center gap-2"
+                >
+                  <span class="material-symbols-outlined">menu_book</span>
+                  继续学习
+                </button>
               </div>
             </div>
           </div>
@@ -193,6 +219,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
+import { userStore } from '../store/userStore'
 
 const navItems = [
   { id: 'home', label: '首页', icon: 'home', to: '/' },
@@ -250,14 +277,39 @@ const verifyCode = ref('')
 const countdown = ref(0)
 const errorMsg = ref('')
 const isSuccess = ref(false)
+const isLoading = ref(false)
 
 const getVerifyCode = () => {
   if (countdown.value > 0) return
-  if (!/^[a-zA-Z0-9_]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+$/.test(email.value)) {
-    errorMsg.value = '请输入正确的邮箱地址'
+  // 邮箱验证逻辑优化 (符合 RFC 5322 标准)
+  // 1. 长度检查
+  if (email.value.length > 254) {
+    errorMsg.value = '邮箱长度超出限制'
+    return
+  }
+  const parts = email.value.split('@')
+  if (parts.length !== 2) {
+    errorMsg.value = '邮箱格式错误'
+    return
+  }
+  if (parts[0].length > 64) {
+    errorMsg.value = '邮箱本地部分长度超出限制'
+    return
+  }
+
+  // 2. 格式检查
+  // 支持: a@b.c (最短), user.name+tag@example.co.uk (多级子域名), 特殊字符
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  
+  if (!emailRegex.test(email.value)) {
+    errorMsg.value = '请输入有效的邮箱地址'
     return
   }
   errorMsg.value = ''
+  // 模拟发送请求
+  console.log(`Sending code to ${email.value}`)
+  alert(`验证码已发送至 ${email.value}，请注意查收（测试码：0000）`)
+  
   countdown.value = 60
   const timer = setInterval(() => {
     countdown.value--
@@ -266,19 +318,26 @@ const getVerifyCode = () => {
 }
 
 const handleRegister = () => {
-  if (isSuccess.value) return
+  if (isSuccess.value || isLoading.value) return
   
-  if (email.value !== 'test@example.com' || verifyCode.value !== '0000') {
-    errorMsg.value = '邮箱或验证码错误（测试：test@example.com / 0000）'  
+  if (email.value !== 'test@qq.com' || verifyCode.value !== '0000') {
+    errorMsg.value = '邮箱或验证码错误（测试：test@qq.com / 0000）'  
     return
   }
   
   errorMsg.value = ''
-  isSuccess.value = true
+  isLoading.value = true
   
+  // 模拟注册请求
   setTimeout(() => {
-    router.push('/my')
-  }, 3000)
+    isLoading.value = false
+    isSuccess.value = true
+    userStore.resetSurveyStatus() // 重置问卷状态，确保新用户能进入问卷
+    
+    setTimeout(() => {
+      router.push('/survey')
+    }, 1500)
+  }, 1000)
 }
 
 // 作为 Vue-Router 的“首页”组件，只需在路由表中把 path: '/' 对应的 component 指向本文件即可。

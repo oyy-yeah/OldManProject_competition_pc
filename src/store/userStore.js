@@ -7,11 +7,37 @@ export const userStore = reactive({
   userInfo: {
     id: 'UID-882049',
     name: '王阿姨',
-    avatar: DEFAULT_AVATAR // 初始使用默认头像
+    avatar: DEFAULT_AVATAR, // 初始使用默认头像
+    isSurveyCompleted: localStorage.getItem('isSurveyCompleted') === 'true'
   },
   
   updateAvatar(newAvatar) {
     this.userInfo.avatar = newAvatar
+  },
+
+  updateSurveyData(data) {
+    this.userInfo = { ...this.userInfo, ...data }
+    this.userInfo.isSurveyCompleted = true
+    localStorage.setItem('isSurveyCompleted', 'true')
+  },
+
+  resetSurveyStatus() {
+    this.userInfo.isSurveyCompleted = false
+    localStorage.removeItem('isSurveyCompleted')
+  },
+  
+  logout() {
+    this.isLoggedIn = false
+    this.userInfo = {
+      id: '',
+      name: '',
+      avatar: DEFAULT_AVATAR,
+      isSurveyCompleted: false
+    }
+    // 清除所有相关本地存储
+    localStorage.removeItem('isSurveyCompleted')
+    localStorage.removeItem('user_sensitive_data')
+    localStorage.removeItem('survey_progress')
   },
   
   login(user) {

@@ -3,7 +3,7 @@
   <main :class="mainClass">
     <router-view />
   </main>
-  <AIAssistant />
+  <AIAssistant v-if="showAIAssistant" />
 </template>
 
 <script setup>
@@ -15,6 +15,7 @@ import AIAssistant from './components/AIAssistant.vue'
 const route = useRoute()
 
 const showGlobalNav = computed(() => route.meta?.showGlobalNav !== false)
+const showAIAssistant = computed(() => route.name !== 'Survey')
 
 const mainClass = computed(() => {
   if (route.meta?.fullWidth) return 'w-full'
